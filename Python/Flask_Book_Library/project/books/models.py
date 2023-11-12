@@ -13,7 +13,11 @@ class Book(db.Model):
     status = db.Column(db.String(20), default='available')
 
     def __init__(self, name, author, year_published, book_type, status='available'):
+        if len(name) > 15 or not re.match("^[a-zA-Z0-9\-:,()]+$", name):
+            raise ValueError("invalid book name")
         self.name = name
+        if len(author) > 15 or not re.match("^[a-zA-Z0-9\-:,()]+$", author):
+            raise ValueError("invalid author name")
         self.author = author
         self.year_published = year_published
         self.book_type = book_type

@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('Error adding book: ' + JSON.stringify(error.response));
+                alert('Error adding book: ' + JSON.stringify(error.response.data.error));
             });
     };
 
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('Error fetching book information: ' + JSON.stringify(error.response));
+                alert('Error fetching book information: ' + JSON.stringify(error.response.data.error));
             });
 
         const saveChangesButton = document.getElementById('saveEditBookButton');

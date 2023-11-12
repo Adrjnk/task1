@@ -1,5 +1,5 @@
 from project import db, app
-
+import re
 
 # Customer model
 class Customer(db.Model):
@@ -10,7 +10,11 @@ class Customer(db.Model):
     age = db.Column(db.Integer)
 
     def __init__(self, name, city, age):
+        if len(name) > 20 or not re.match("^[a-zA-Z]+$", name):
+            raise ValueError("invalid customer name")
         self.name = name
+        if len(city) > 20 or not re.match("^[a-zA-Z]+$", city):
+            raise ValueError("invalid city name")
         self.city = city
         self.age = age
 
