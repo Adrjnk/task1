@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('Error editing book: ' + JSON.stringify(error.response));
+                    alert('Error editing book: ' + JSON.stringify(error.response.data.error));
                 });
         });
     };
